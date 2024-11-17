@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "yiddish24 audio downloader",
+    "version": "1.0",
+    "description": "downloads audio from Yiddish 24, made by BouDev",
+    "permissions": [
+        "activeTab",
+        "downloads" 
+    ],
+    "host_permissions": [
+      "https://www.yiddish24.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "icons": {
+        "16": "icon-16.png",
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.yiddish24.com/*"],
+        "js": ["content.js"],
+        "css": ["style.css"],
+        "run_at": "document_start" 
+      }
+    ]
+}
