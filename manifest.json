@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "yiddish24 audio downloader",
+    "name": "yiddish25",
     "version": "1.0",
-    "description": "downloads audio from Yiddish 24, made by BouDev",
+    "description": "downloads audio and video from Yiddish 24 and blocks ads, made by BouDev",
     "permissions": [
         "activeTab",
         "downloads" 
