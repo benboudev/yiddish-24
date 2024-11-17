@@ -25,13 +25,16 @@ const loadingIconHTML = `
 function addDownloadButtons() {
   // Find all audio elements on the page
   const audioElements = document.querySelectorAll('.playing-panel.audio, .playing_inner');
-
-  // Iterate through each audio element
-  audioElements.forEach(audioElement => {
-    // Check if a download button already exists
-    if (!audioElement.querySelector('.download-button')) {
-      // Get the song URL from the data attribute
-      const songUrl = audioElement.dataset.songUrl;
+const add = document.querySelectorAll('.ads-section, .bulletin-ads-bg-block');
+add.forEach((ad) => {
+  ad.style.display = 'none';
+});
+// Iterate through each audio element
+audioElements.forEach(audioElement => {
+  // Check if a download button already exists
+  if (!audioElement.querySelector('.download-button')) {
+    // Get the song URL from the data attribute
+    const songUrl = audioElement.dataset.songUrl;
 
       // Create a new button element
       const downloadButton = document.createElement('button');
