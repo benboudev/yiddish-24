@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Downloader</title>
+    <title>yiddish24 Downloader</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --background-color: #1a1a2e;
+        }
 
         body {
             width: 400px;
@@ -13,69 +19,72 @@
             font-family: 'Orbitron', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #1e3c72, #2a5298, #1e3c72);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-color: var(--background-color);
             color: #fff;
             overflow: hidden;
         }
+
         .container {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
             text-align: center;
             position: relative;
             overflow: hidden;
             height: 100%;
-            border: 2px solid #fff;
-            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
+
         h1 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 36px;
             margin-bottom: 15px;
-            color: #fff;
-            animation: snowGlitch 1s infinite;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+            animation: glitch 1s infinite;
         }
+
         .icon {
             font-size: 64px;
             margin-bottom: 20px;
-            animation: snowSpinAndBounce 2s ease-in-out infinite;
-            color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            animation: float 3s ease-in-out infinite;
         }
+
         .description {
             font-size: 18px;
             line-height: 1.5;
             margin-bottom: 20px;
-            animation: snowFlicker 3s infinite;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            color: #ddd;
         }
+
         .btn {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #00f;
-            color: #fff;
+            background-color: var(--primary-color);
+            color: var(--background-color);
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            z-index: 1;
-            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+            margin: 10px 0;
+            border: none;
         }
+
         .btn:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--primary-color);
         }
+
         .btn:active {
             transform: scale(0.95);
         }
+
         .btn::before {
             content: "";
             position: absolute;
@@ -83,28 +92,20 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, #00ffff, #00f, #fff, #00ffff);
-            animation: snowRotate 4s linear infinite;
+            background: conic-gradient(from 0deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+            animation: rotate 4s linear infinite;
             z-index: -1;
-            filter: blur(10px);
+            opacity: 0.3;
         }
-        .flying-object {
-            position: absolute;
-            font-size: 30px;
-            animation: snowFly 10s linear infinite;
-            color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
-        }
-        .car, .fireball {
-            display: none;
-        }
+
         #downloadCount {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
-            color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--secondary-color);
         }
+
         #funMeter {
             width: 80%;
             height: 20px;
@@ -112,86 +113,95 @@
             border-radius: 10px;
             margin: 20px auto;
             overflow: hidden;
-            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
+
         #funFill {
             width: 0%;
             height: 100%;
-            background-color: #fff;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             transition: width 0.5s ease;
-            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
-        #partyButton {
+
+        #partyButton, #starsButton {
             font-size: 48px;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
             cursor: pointer;
-            color: #fff;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--secondary-color);
+            transition: transform 0.3s ease;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        #partyButton:hover, #starsButton:hover {
+            transform: scale(1.1) rotate(15deg);
         }
-        @keyframes snowGlitch {
-            0% { transform: skew(0deg); }
-            20% { transform: skew(5deg); }
-            40% { transform: skew(-5deg); }
-            60% { transform: skew(5deg); }
-            80% { transform: skew(-5deg); }
-            100% { transform: skew(0deg); }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
-        @keyframes snowSpinAndBounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
         }
-        @keyframes snowFlicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
         }
-        @keyframes snowRotate {
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @keyframes snowFly {
-            0% { transform: translate(-100%, -100%) rotate(0deg); }
-            25% { transform: translate(400px, 150px) rotate(90deg); }
-            50% { transform: translate(0px, 300px) rotate(180deg); }
-            75% { transform: translate(-200px, 150px) rotate(270deg); }
-            100% { transform: translate(-100%, -100%) rotate(360deg); }
-        }
-        @keyframes drive {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(50%); }
-            100% { transform: translateX(-100%); }
-        }
-        @keyframes explode {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(3); opacity: 0; }
-        }
-        @keyframes fullScreenExplode {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(10); opacity: 0; }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="icon">📥</div>
-        <h1>yiddish24 Downloader</h1>
-        
+        <div>
+            <div class="icon">📥</div>
+            <h1>yiddish24 Downloader</h1>
             <p class="description">
-                Easily download content from Yiddish 24. Access your favorite Yiddish content with just one click! this extension is made by BouDev.
+                Easily download content from Yiddish 24. Access your favorite Yiddish content with just one click! This extension is made by BouDev.
             </p>
-        
-            <a href="https://www.yiddish24.com/" class="btn" target="_blank" rel="noopener noreferrer" id="downloadBtn">Download from Yiddish 24</a>
+        </div>
+        <div>
+            <button class="btn" id="downloadBtn">Download from Yiddish 24</button>
             <a href="mailto:bmandel@ssuccess.net" class="btn">Contact Developer</a>
-        
-     </div>
-    
+            <!-- <div id="downloadCount">Downloads: 0</div> -->
+            <!-- <div id="funMeter"><div id="funFill"></div></div> -->
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: -50px;">
+            <button id="starsButton">✨</button>
+            <button id="partyButton">♽</button>
+        </div>
+        </div>
+    <div class="stars" id="stars"></div>
     <script src="popup.js"></script>
 </body>
 </html>
