@@ -5,53 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Downloader</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
             width: 400px;
             height: 600px;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background: linear-gradient(45deg, #1e3c72, #2a5298, #1e3c72);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            color: #333;
+            color: #fff;
             overflow: hidden;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(0, 0, 0, 0.8);
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
             text-align: center;
             position: relative;
             overflow: hidden;
             height: 100%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
         }
         h1 {
-            font-family: 'Bangers', cursive;
+            font-family: 'Orbitron', sans-serif;
             font-size: 36px;
             margin-bottom: 15px;
-            color: #ff6b6b;
-            animation: crazyText 3s ease-in-out infinite;
+            color: #fff;
+            animation: snowGlitch 1s infinite;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
         }
         .icon {
             font-size: 64px;
             margin-bottom: 20px;
-            animation: spinAndBounce 2s ease-in-out infinite;
+            animation: snowSpinAndBounce 2s ease-in-out infinite;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
         }
         .description {
             font-size: 18px;
             line-height: 1.5;
             margin-bottom: 20px;
-            animation: wobble 5s ease-in-out infinite;
+            animation: snowFlicker 3s infinite;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
         }
         .btn {
             display: inline-block;
             padding: 15px 30px;
-            background-color: #4ecdc4;
-            color: white;
+            background-color: #00f;
+            color: #fff;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
@@ -61,9 +67,11 @@
             overflow: hidden;
             cursor: pointer;
             z-index: 1;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
         .btn:hover {
             transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px #fff, 0 0 40px #fff, 0 0 60px #fff;
         }
         .btn:active {
             transform: scale(0.95);
@@ -75,34 +83,43 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3, #ff6b6b);
-            animation: rotate 4s linear infinite;
+            background: conic-gradient(from 0deg, #00ffff, #00f, #fff, #00ffff);
+            animation: snowRotate 4s linear infinite;
             z-index: -1;
+            filter: blur(10px);
         }
         .flying-object {
             position: absolute;
             font-size: 30px;
-            animation: fly 10s linear infinite;
+            animation: snowFly 10s linear infinite;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
+        }
+        .car, .fireball {
+            display: none;
         }
         #downloadCount {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
-            color: #ff6b6b;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
         }
         #funMeter {
             width: 80%;
             height: 20px;
-            background-color: #ddd;
+            background-color: #333;
             border-radius: 10px;
             margin: 20px auto;
             overflow: hidden;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
         #funFill {
             width: 0%;
             height: 100%;
-            background-color: #ff6b6b;
+            background-color: #fff;
             transition: width 0.5s ease;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
         }
         #partyButton {
             font-size: 48px;
@@ -111,40 +128,53 @@
             left: 50%;
             transform: translateX(-50%);
             cursor: pointer;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
         }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        @keyframes crazyText {
-            0%, 100% { transform: skew(-15deg) rotate(0deg); text-shadow: 2px 2px #ff6b6b, -2px -2px #48dbfb; }
-            25% { transform: skew(15deg) rotate(5deg) scale(1.1); text-shadow: -2px 2px #feca57, 2px -2px #ff9ff3; }
-            50% { transform: skew(-15deg) rotate(-5deg) scale(0.9); text-shadow: 2px -2px #ff6b6b, -2px 2px #48dbfb; }
-            75% { transform: skew(15deg) rotate(5deg) scale(1.1); text-shadow: -2px -2px #feca57, 2px 2px #ff9ff3; }
+        @keyframes snowGlitch {
+            0% { transform: skew(0deg); }
+            20% { transform: skew(5deg); }
+            40% { transform: skew(-5deg); }
+            60% { transform: skew(5deg); }
+            80% { transform: skew(-5deg); }
+            100% { transform: skew(0deg); }
         }
-        @keyframes spinAndBounce {
+        @keyframes snowSpinAndBounce {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
         }
-        @keyframes wobble {
-            0%, 100% { transform: translateX(0%) rotate(0deg); }
-            15% { transform: translateX(-25%) rotate(-5deg); }
-            30% { transform: translateX(20%) rotate(3deg); }
-            45% { transform: translateX(-15%) rotate(-3deg); }
-            60% { transform: translateX(10%) rotate(2deg); }
-            75% { transform: translateX(-5%) rotate(-1deg); }
+        @keyframes snowFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
-        @keyframes rotate {
+        @keyframes snowRotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        @keyframes fly {
+        @keyframes snowFly {
             0% { transform: translate(-100%, -100%) rotate(0deg); }
             25% { transform: translate(400px, 150px) rotate(90deg); }
             50% { transform: translate(0px, 300px) rotate(180deg); }
             75% { transform: translate(-200px, 150px) rotate(270deg); }
             100% { transform: translate(-100%, -100%) rotate(360deg); }
+        }
+        @keyframes drive {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(50%); }
+            100% { transform: translateX(-100%); }
+        }
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        @keyframes fullScreenExplode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(10); opacity: 0; }
         }
     </style>
 </head>
@@ -159,39 +189,9 @@
         
             <a href="https://www.yiddish24.com/" class="btn" target="_blank" rel="noopener noreferrer" id="downloadBtn">Download from Yiddish 24</a>
             <a href="mailto:bmandel@ssuccess.net" class="btn">Contact Developer</a>
-        <!-- <div id="downloadCount">Downloads: 0</div> -->
         
-    <script>
-        const btn = document.getElementById('downloadBtn');
-        const container = document.querySelector('.container');
-        const downloadCount = document.getElementById('downloadCount');
-       
-        let count = 0;
-        let funLevel = 0;
-        let partyLevel = 0;
-
-       
-
-      
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const downloadCount = document.getElementById('downloadCount');
-            chrome.storage.local.get(['downloadCount'], (result) => {
-                downloadCount.textContent = `Downloads: ${result.downloadCount || 0}`;
-            });
-
-            const downloadBtn = document.getElementById('downloadBtn');
-            downloadBtn.addEventListener('click', () => {
-                chrome.storage.local.get(['downloadCount'], (result) => {
-                    let count = result.downloadCount || 0;
-                    count++;
-                    chrome.storage.local.set({ downloadCount: count }, () => {
-                        downloadCount.textContent = `Downloads: ${count}`;
-                    });
-                });
-            });
-        });
-    </script>
+     </div>
+    
+    <script src="popup.js"></script>
 </body>
 </html>
