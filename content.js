@@ -35,7 +35,8 @@ audioElements.forEach(audioElement => {
   if (!audioElement.querySelector('.download-button')) {
     // Get the song URL from the data attribute
     const songUrl = audioElement.dataset.songUrl;
-
+    const songImage = audioElement.dataset.image;
+    console.log('iage', songImage);
       // Create a new button element
       const downloadButton = document.createElement('button');
       downloadButton.classList.add('download-button'); 
