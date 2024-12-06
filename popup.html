@@ -171,7 +171,10 @@
         }
 
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
+            0% { transform: skew(50deg, 20deg); }
+            25% { transform: matrix(1, 0, 0, 1, 0, 0); }
+            50% { transform: rotate(0.5turn); }
+            75% { transform: skew(30deg, 20deg); }
             100% { transform: rotate(360deg); }
         }
 
@@ -192,9 +195,6 @@
         </div>
         <div>
             <a href="https://www.yiddish24.com/" class="btn" id="downloadBtn" target="_blank" rel="noopener noreferrer">Download from Yiddish 24</a>
-            <a href="mailto:bmandel@ssuccess.net" class="btn">Contact Developer</a>
-            <!-- <div id="downloadCount">Downloads: 0</div> -->
-            <!-- <div id="funMeter"><div id="funFill"></div></div> -->
         </div>
         <div style="display: flex; justify-content: space-between; margin-top: -50px;">
             <button id="starsButton">✨</button>

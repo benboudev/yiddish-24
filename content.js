@@ -25,10 +25,7 @@ const loadingIconHTML = `
 function addDownloadButtons() {
   // Find all audio elements on the page
   const audioElements = document.querySelectorAll('.playing-panel.audio, .playing_inner');
-const add = document.querySelectorAll('.ads-section, .bulletin-ads-bg-block');
-add.forEach((ad) => {
-  ad.style.display = 'none';
-});
+
 // Iterate through each audio element
 audioElements.forEach(audioElement => {
   // Check if a download button already exists
