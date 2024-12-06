@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiddish 24 Chrome Extension</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#disclaimer">Disclaimer</a>
+            <a href="#who-we-are">Who We Are</a>
+        </nav>
+    </header>
+
+    <div class="background">
+        <div class="orbs"></div>
+    </div>
+
+    <div class="container">
+        <header class="header fade-in">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+            </div>
+            <h1>Yiddish 24 Downloader Chrome Extension</h1>
+            <p>Download audio and video from Yiddish 24 and block ads.</p>
+            
+        </header>
+
+        <div class="cards">
+            <div class="card slide-up">
+                <div class="card-icon">
+                    <svg width="64px" height="64px" viewBox="0 0 48 48" id="a" xmlns="http://www.w3.org/2000/svg"
+                        fill="#000000" stroke="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <defs>
+                                <style>
+                                    .b {
+                                        fill: none;
+                                        stroke: #4b9325;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                    }
+                                </style>
+                            </defs>
+                            <polygon class="b"
+                                points="31.663 5.5 16.337 5.5 5.5 16.337 5.5 31.663 16.337 42.5 31.663 42.5 42.5 31.663 42.5 16.337 31.663 5.5">
+                            </polygon>
+                            <line class="b" x1="18" y1="30" x2="30" y2="18"></line>
+                            <line class="b" x1="18" y1="18" x2="30" y2="30"></line>
+                        </g>
+                    </svg>
+                </div>
+                <h3>Ad Blocking</h3>
+                <p>Automatically block ads on Yiddish 24 for a cleaner experience.</p>
+                <p>To block ads, add the following code to content.js (use at your own risk):</p>
+                <button class="expand-btn" onclick="showCodePopup()">
+                    Expand Code
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path d="M120-120v-320h80v184l504-504H520v-80h320v320h-80v-184L256-200h184v80H120Z"/>
+                    </svg>
+                </button>
+                <div class="cyber-code-block">
+                    <pre><code>
+const ads = document.querySelectorAll('.ads-section, .bulletin-ads-bg-block');
+ads.forEach((ad) => {
+  ad.style.display = 'none';
+});
+                    </code></pre>
+                    <button class="copy-btn" onclick="copyCode()">
+                        Copy Code
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                            <path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card slide-up">
+                <div class="card-icon">
+                    <svg width="64px" height="64px" viewBox="-0.5 0 25 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M6 22.42C8.20914 22.42 10 20.6292 10 18.42C10 16.2109 8.20914 14.42 6 14.42C3.79086 14.42 2 16.2109 2 18.42C2 20.6292 3.79086 22.42 6 22.42Z"
+                                stroke="#67a121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M18 20.42C20.2091 20.42 22 18.6292 22 16.42C22 14.2109 20.2091 12.42 18 12.42C15.7909 12.42 14 14.2109 14 16.42C14 18.6292 15.7909 20.42 18 20.42Z"
+                                stroke="#67a121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="M10 18.4099V9.5C9.99907 8.0814 10.5008 6.70828 11.4162 5.62451C12.3315 4.54074 13.6012 3.81639 15 3.57996L22 2.40991V16.4099"
+                                stroke="#67a121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+                <h3>Audio Downloads</h3>
+                <p>Download audio files directly from Yiddish 24 with a single click.</p>
+            </div>
+
+            <div class="card slide-up">
+                <div class="card-icon">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M16 10L18.5768 8.45392C19.3699 7.97803 19.7665 7.74009 20.0928 7.77051C20.3773 7.79703 20.6369 7.944 20.806 8.17433C21 8.43848 21 8.90095 21 9.8259V14.1741C21 15.099 21 15.5615 20.806 15.8257C20.6369 16.056 20.3773 16.203 20.0928 16.2295C19.7665 16.2599 19.3699 16.022 18.5768 15.5461L16 14M6.5 11V15M6.5 15H10.5M6.5 15L12.5 9M6.2 18H12.8C13.9201 18 14.4802 18 14.908 17.782C15.2843 17.5903 15.5903 17.2843 15.782 16.908C16 16.4802 16 15.9201 16 14.8V9.2C16 8.0799 16 7.51984 15.782 7.09202C15.5903 6.71569 15.2843 6.40973 14.908 6.21799C14.4802 6 13.9201 6 12.8 6H6.2C5.0799 6 4.51984 6 4.09202 6.21799C3.71569 6.40973 3.40973 6.71569 3.21799 7.09202C3 7.51984 3 8.0799 3 9.2V14.8C3 15.9201 3 16.4802 3.21799 16.908C3.40973 17.2843 3.71569 17.5903 4.09202 17.782C4.51984 18 5.07989 18 6.2 18Z"
+                                stroke="#328b80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+                <h3>Video Downloads</h3>
+                <p>Download video files directly from Yiddish 24 with ease.</p>
+            </div>
+        </div>
+        <button class="download-btn" onclick="openPopup()">Download Now</button>
+    </div>
+
+    <div class="explanation" id="how-it-works">
+        <h2>How This Extension Works</h2>
+        <p>This Chrome extension enhances your experience on Yiddish 24 by providing the following features:</p>
+        <ul>
+            <li><strong>Ad Blocking:</strong> Automatically blocks ads on Yiddish 24 for a cleaner and more enjoyable browsing experience.</li>
+            <li><strong>Audio Downloads:</strong> Allows you to download audio files directly from Yiddish 24 with a single click.</li>
+            <li><strong>Video Downloads:</strong> Enables you to download video files directly from Yiddish 24 with ease.</li>
+        </ul>
+        
+        <h3>How It Works</h3>
+        <p>The extension consists of two main scripts: <code>content.js</code> and <code>background.js</code>.</p>
+        <h4>content.js</h4>
+        <p>The <code>content.js</code> script is injected into the Yiddish 24 website and is responsible for adding the download buttons to the audio and video elements on the page. It listens for DOM changes to ensure that newly loaded elements also get the download buttons. When a download button is clicked, it sends a message to the <code>background.js</code> script to handle the download.</p>
+        <h4>background.js</h4>
+        <p>The <code>background.js</code> script listens for messages from <code>content.js</code> and handles the actual downloading of audio and video files. It fetches the files from the server and creates download links to save them to your device. It also sends messages back to <code>content.js</code> to update the UI, such as re-enabling the download buttons after a download is complete.</p>
+    </div>
+
+    <div class="explanation" id="disclaimer">
+        <h2>Disclaimer</h2>
+        <p>We are not responsible for the content downloaded using this extension. All content belongs to Yiddish 24. Please ensure you have the right to download and use the content according to Yiddish 24's terms and conditions.</p>
+    </div>
+
+    <div class="explanation" id="who-we-are">
+        <h2>Who We Are</h2>
+        <p>We are a group of bochurim (students) in yeshiva who love to listen to the inspiring and educational content from Yiddish 24. This extension was created to help us download and listen to the content offline, especially during times when we do not have internet access. We hope this extension will be helpful to others as well.</p>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Click the download button below.</li>
+            <li>Save the zip file to your desired location.</li>
+            <li>Extract the contents of the zip file to a folder of your choice.</li>
+            <li>Open Chrome and go to <strong>chrome://extensions/</strong>.</li>
+            <li>Enable <strong>Developer mode</strong> by toggling the switch in the top right corner.</li>
+            <li>Click the <strong>Load unpacked</strong> button and select the folder containing the extracted files.</li>
+            <li>Hit refresh on <strong>yiddish24.com</strong>.</li>
+            <li>Enjoy your downloaded content and the extension!</li>
+        </ol>
+        <button class="download-btn" onclick="downloadFiles()">Download</button>
+        <button class="download-btn" onclick="downloadInstructionsPDF()">Download Instructions as PDF</button>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <div class="cyber-popup" id="cyber-popup">
+        <h2>Code Copied!</h2>
+    </div>
+
+    <div class="code-popup" id="code-popup">
+        <pre><code>
+const ads = document.querySelectorAll('.ads-section, .bulletin-ads-bg-block');
+ads.forEach((ad) => {
+  ad.style.display = 'none';
+});
+        </code></pre>
+        <button class="copy-btn" onclick="copyCode()">
+            Copy Code
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+                <path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/>
+            </svg>
+        </button>
+        <button class="close-btn" onclick="closeCodePopup()">Close</button>
+    </div>
+
+    <footer class="site-footer">
+        <p>Project by Boudev</p>
+        <a href="https://github.com/benboudev/yiddish-24" target="_blank">GitHub Repository</a>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="homescript.js"></script>
+    <script>
+        function copyCode() {
+            const code = `const ads = document.querySelectorAll('.ads-section, .bulletin-ads-bg-block');
+ads.forEach((ad) => {
+  ad.style.display = 'none';
+});`;
+            navigator.clipboard.writeText(code).then(() => {
+                showCyberPopup();
+            });
+        }
+    </script>
+</body>
+
+</html>
