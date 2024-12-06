@@ -168,25 +168,9 @@ function downloadInstructionsPDF() {
     doc.setFont("helvetica", "bold");
     doc.text("Instructions", 105, 20, null, null, "center");
     
-    // Add padding
-    doc.setDrawColor(0);
-    doc.setFillColor(255, 255, 255);
-    doc.rect(15, 15, 180, 267, "F");
-    
-    // Add instructions box with site style colors
-    doc.setDrawColor(0);
-    doc.setFillColor(139, 92, 246); // Primary color
-    doc.roundedRect(20, 35, 170, 100, 5, 5, "F");
-    
-    // Add shadow effect
-    doc.setDrawColor(236, 72, 153); // Secondary color
-    doc.setFillColor(236, 72, 153);
-    doc.roundedRect(22, 37, 170, 100, 5, 5, "F");
-    
     // Add instructions
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
-    doc.setTextColor(255, 255, 255); // White text color
     const instructions = [
         "1. Click the download button below.",
         "2. Save the zip file to your desired location.",
