@@ -127,7 +127,7 @@ ads.forEach((ad) => {
                 <p>Download video files directly from Yiddish 24 with ease.</p>
             </div>
         </div>
-        <button class="download-btn" onclick="openPopup()">Download Now</button>
+        <button class="download-btn" onclick="showDisclaimerPopup()">Download Now</button>
     </div>
 
     <div class="explanation" id="how-it-works">
@@ -194,6 +194,13 @@ ads.forEach((ad) => {
         <button class="close-btn" onclick="closeCodePopup()">Close</button>
     </div>
 
+    <div class="disclaimer-popup" id="disclaimer-popup">
+        <h2>Disclaimer</h2>
+        <p>We are not responsible for the content downloaded using this extension. All content belongs to Yiddish 24. Please ensure you have the right to download and use the content according to Yiddish 24's terms and conditions.</p>
+        <button class="confirm-btn" onclick="confirmDisclaimer()">I Agree</button>
+        <button class="close-btn" onclick="closeDisclaimerPopup()">Close</button>
+    </div>
+
     <footer class="site-footer">
         <p>Project by Boudev</p>
         <a href="https://github.com/benboudev/yiddish-24" target="_blank">GitHub Repository</a>
@@ -211,6 +218,29 @@ ads.forEach((ad) => {
             navigator.clipboard.writeText(code).then(() => {
                 showCyberPopup();
             });
+        }
+
+        function showDisclaimerPopup() {
+            const popup = document.getElementById('disclaimer-popup');
+            popup.classList.add('active');
+            setTimeout(() => {
+                popup.style.transform = 'translate(-50%, -50%) scale(1)';
+                popup.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeDisclaimerPopup() {
+            const popup = document.getElementById('disclaimer-popup');
+            popup.style.transform = 'translate(-50%, -50%) scale(0)';
+            popup.style.opacity = '0';
+            setTimeout(() => {
+                popup.classList.remove('active');
+            }, 300);
+        }
+
+        function confirmDisclaimer() {
+            closeDisclaimerPopup();
+            openPopup();
         }
     </script>
 </body>

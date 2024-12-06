@@ -467,6 +467,63 @@
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
   }
 
+  .disclaimer-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    border-radius: 1rem;
+    z-index: 1000;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  .disclaimer-popup.active {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  .disclaimer-popup h2 {
+    margin-bottom: 1rem;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .disclaimer-popup p {
+    margin-bottom: 2rem;
+    animation: fadeIn 0.7s ease forwards;
+  }
+  
+  .disclaimer-popup .confirm-btn,
+  .disclaimer-popup .close-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    animation: fadeIn 1.1s ease forwards;
+  }
+  
+  .disclaimer-popup .close-btn {
+    background: linear-gradient(135deg, #4b79a1 0%, #283e51 100%);
+  }
+  
+  .disclaimer-popup .confirm-btn:hover,
+  .disclaimer-popup .close-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
   .explanation {
     max-width: 800px;
     margin: 2rem auto;
